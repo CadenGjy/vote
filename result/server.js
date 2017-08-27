@@ -1,3 +1,6 @@
+const appInsights = require("applicationinsights");
+appInsights.setup("63ca971c-f17b-4c7b-99db-a8c35b509248");
+appInsights.start();
 var express = require('express'),
     async = require('async'),
     pg = require("pg"),
