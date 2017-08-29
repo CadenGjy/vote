@@ -1,3 +1,7 @@
+from applicationinsights import TelemetryClient
+tc = TelemetryClient()
+tc.context.instrumentationKey = "<Y2830aadc-25ef-48fd-95a0-3675e59bddda>"
+tc.trackEvent("Test event")
 from flask import Flask, render_template, request, make_response, g
 from redis import Redis
 import os
