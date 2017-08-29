@@ -1,3 +1,11 @@
+const appInsights = require("applicationinsights");
+appInsights.setup("3de3de4b-5e14-47ef-801f-9d82e4e8c29c")
+    .setAutoDependencyCorrelation(false)
+    .setAutoCollectRequests(true)
+    .setAutoCollectPerformance(true)
+    .setAutoCollectExceptions(true)
+    .setAutoCollectDependencies(true)
+    .start();
 var app = angular.module('catsvsdogs', []);
 var socket = io.connect({transports:['polling']});
 
