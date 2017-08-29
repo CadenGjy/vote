@@ -1,5 +1,5 @@
 const appInsights = require("applicationinsights");
-appInsights.setup("63ca971c-f17b-4c7b-99db-a8c35b509248");
+appInsights.setup("63ca971c-f17b-4c7b-99db-a8c35b509248")
     .setAutoDependencyCorrelation(false)
     .setAutoCollectRequests(true)
     .setAutoCollectPerformance(true)
