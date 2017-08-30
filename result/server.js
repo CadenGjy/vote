@@ -6,6 +6,11 @@ appInsights.setup("3de3de4b-5e14-47ef-801f-9d82e4e8c29c")
     .setAutoCollectExceptions(true)
     .setAutoCollectDependencies(true)
     .start();
+let client = appInsights.getClient('3de3de4b-5e14-47ef-801f-9d82e4e8c29c');
+client.trackEvent("my custom event", { customProperty: "custom property value" });
+client.trackException(new Error("handled exceptions can be logged with this method"));
+client.trackMetric("custom metric", 3);
+client.trackTrace("trace message");
 var express = require('express'),
     async = require('async'),
     pg = require("pg"),
@@ -75,6 +80,7 @@ app.use(cookieParser());
 app.use(bodyParser());
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(function(req, res, next) {
+  client.trackRequest(req, res); //Place at the beginning of your request handler
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
